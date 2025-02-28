@@ -6,7 +6,7 @@ csiim = nrCSIIMConfig;
 csiim.pattern = 0; % pattern 0 or pattern 1
 csiim.SubcarrierLocations = 4;
 csiim.SymbolLocations = 9;
-csiim.NumCSIRSPorts = 32;
+csiim.NumTxPorts = 1;
 csiim.NumRB = carrier.NSizeGrid;
 csiim.RBOffset = carrier.NStartGrid;
 csiim.CSIRSPeriod = [5 0];
@@ -32,7 +32,7 @@ numCarr = csiim.getNumREsPerRb();
 %% Run 5G toolbox simulation over multiple slots
 
 % Create an OFDM resource grid for a slot
-dlGrid = nrResourceGrid(carrier,csiim.NumCSIRSPorts);
+dlGrid = nrResourceGrid(carrier,csiim.NumTxPorts);
 
 for nslot=0:15
     fprintf('Slot %d\n',nslot);

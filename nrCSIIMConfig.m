@@ -12,7 +12,7 @@ classdef nrCSIIMConfig
         Density = 'one';
         NumRB = 52;
         RBOffset = 0;
-        NumCSIRSPorts = 1;
+        NumTxPorts = 1;
         CSIRSPeriod = 'on';
         NID = 0;
     end
@@ -85,10 +85,10 @@ classdef nrCSIIMConfig
             csiimInd = [csiimInd, symRep];
 
             antRep = [];
-            for nTx=1:obj.NumCSIRSPorts
+            for nTx=1:obj.NumTxPorts
                 antRep = [antRep;nTx*uint32(ones(size(csiimInd,1),1))];
             end
-            csiimInd = repmat(csiimInd,obj.NumCSIRSPorts,1);
+            csiimInd = repmat(csiimInd,obj.NumTxPorts,1);
             csiimInd = cat(2,csiimInd,antRep);
             if strcmp(p.Results.IndexStyle, 'subscript')
                 if (strcmpi(p.Results.IndexBase,"0based"))
@@ -97,7 +97,7 @@ classdef nrCSIIMConfig
                 return;
             end
             
-            gridsize = [double(carrier.NSizeGrid)*12, carrier.SymbolsPerSlot, obj.NumCSIRSPorts];
+            gridsize = [double(carrier.NSizeGrid)*12, carrier.SymbolsPerSlot, obj.NumTxPorts];
             csiimInd = uint32(sub2ind(gridsize,csiimInd(:,1),csiimInd(:,2),csiimInd(:,3)));
             if (strcmpi(p.Results.IndexBase,"0based"))
                 csiimInd = csiimInd - 1;
