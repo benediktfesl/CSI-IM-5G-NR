@@ -1,5 +1,7 @@
 # nrCSIIMConfig
 
+[![View nrCSIIMConfig: Explicit CSI-IM Configuration for 5G NR on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/183791-nrcsiimconfig-explicit-csi-im-configuration-for-5g-nr)
+
 `nrCSIIMConfig` is a MATLAB class for configuring Channel State Information Interference Measurement (CSI-IM) resources in compliance with 3GPP TS 38.214 Section 5.2.2.4. It leverages the `nrCSIRSConfig` object from the 5G Toolbox to handle Channel State Information Reference Signal (CSI-RS)-related configuration internally while exposing a simplified interface for CSI-IM setup.
 
 ## Motivation
