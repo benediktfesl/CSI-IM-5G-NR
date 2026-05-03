@@ -19,10 +19,10 @@ csiimInd = csiim.indices(carrier);
 % [subcarrier, symbol, antenna] subscript row form indexing (1-based)
 csiimInd = csiim.indices(carrier, 'IndexStyle', 'subscript'); 
 
-% {timeInd, SymInd} indexing (1-based)
+% {symbolIndices, subcarrierIndices} indexing (1-based)
 csiimInd = csiim.indices(carrier, 'IndexStyle', 'separateTimeFreq'); 
 
-% {timeInd, SymInd} indexing (0-based)
+% {symbolIndices, subcarrierIndices} indexing (0-based)
 csiimInd = csiim.indices(carrier, 'IndexStyle', 'separateTimeFreq', 'IndexBase', '0based'); 
 
 %% Get number of symbols and subcarriers allocated per RB and slot

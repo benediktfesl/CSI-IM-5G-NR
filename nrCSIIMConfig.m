@@ -40,7 +40,7 @@ classdef nrCSIIMConfig
             %                            'subscript' for [subcarrier, symbol, antenna] 
             %                            subscript row form
             %                            'separateTimeFreq' for cell of
-            %                            separated {freqIndices, timeIndices}
+            %                            separated {timeIndices, freqIndices}
             %
             %   'IndexBase'            - '1based' for 1-based indices (default) 
             %                            '0based' for 0-based indices
