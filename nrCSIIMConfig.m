@@ -6,7 +6,7 @@ classdef nrCSIIMConfig
     %   related to TS 38.214 Section 5.2.2.4. 
     
     properties
-        pattern = 0;
+        Pattern = 0;
         SymbolLocations = 0;
         SubcarrierLocations = 0;
         Density = 'one';
@@ -49,10 +49,10 @@ classdef nrCSIIMConfig
             addRequired(p,'carrier', @(x) isequal(class(x),'nrCarrierConfig'));
             defaultIndex = 'index';
             expectedIndexStyles = {'index','subscript','separateTimeFreq'};
-            addOptional(p, 'IndexStyle', defaultIndex, @(x) any(validatestring(x,expectedIndexStyles)));
+            addParameter(p, 'IndexStyle', defaultIndex, @(x) any(validatestring(x,expectedIndexStyles)));
             defaultBasis = '1based';
             expectedBasis = {'1based','0based'};
-            addOptional(p, 'IndexBase', defaultBasis, @(x) any(validatestring(x,expectedBasis)));
+            addParameter(p, 'IndexBase', defaultBasis, @(x) any(validatestring(x,expectedBasis)));
             parse(p,carrier,varargin{:});
 
             [csiimRefInd,~] = nrCSIRSIndices(carrier, obj.csirs,'IndexStyle','subscript');
@@ -77,9 +77,9 @@ classdef nrCSIIMConfig
             end
 
             csiimInd = repmat(subcarrierLoc,lenSym,1);
-            if obj.pattern == 0
+            if obj.Pattern == 0
                 symRep = [symLoc(1)*uint32(ones(size(subcarrierLoc,1),1)); symLoc(2)*uint32(ones(size(subcarrierLoc,1),1))];
-            elseif obj.pattern == 1
+            elseif obj.Pattern == 1
                 symRep = symLoc(1)*uint32(ones(size(subcarrierLoc,1),1));
             end
             csiimInd = [csiimInd, symRep];
@@ -105,11 +105,11 @@ classdef nrCSIIMConfig
         end
 
         function numSym = getNumSym(obj)
-            numSym = ~obj.pattern + 1;
+            numSym = ~obj.Pattern + 1;
         end
 
         function numREsPerRb = getNumREsPerRb(obj)
-            numREsPerRb = obj.pattern*2+2;
+            numREsPerRb = obj.Pattern*2+2;
         end
     
     end
@@ -121,13 +121,13 @@ classdef nrCSIIMConfig
         end
 
         function obj = configureCSIRS(obj)
-            switch obj.pattern
-                case 0  % Similar to CSI-RS pattern 0 (Row 5)
+            switch obj.Pattern
+                case 0  % Similar to CSI-RS Pattern 0 (Row 5)
                     obj.csirs.RowNumber = 5;
-                case 1  % Similar to CSI-RS pattern 1 (Row 4)
+                case 1  % Similar to CSI-RS Pattern 1 (Row 4)
                     obj.csirs.RowNumber = 4;
                 otherwise
-                    error('Unsupported CSI-IM pattern.');
+                    error('Unsupported CSI-IM Pattern.');
             end
             obj.csirs.SymbolLocations = obj.SymbolLocations;
             obj.csirs.SubcarrierLocations = obj.SubcarrierLocations;
@@ -139,15 +139,15 @@ classdef nrCSIIMConfig
         end 
 
         % --- Dynamic Property Set Methods ---
-        function obj = set.pattern(obj, value)
-            obj.pattern = value;
+        function obj = set.Pattern(obj, value)
+            obj.Pattern = value;
             switch value
-                case 0  % Similar to CSI-RS pattern 0 (Row 5)
+                case 0  % Similar to CSI-RS Pattern 0 (Row 5)
                     obj.csirs.RowNumber = 5;
-                case 1  % Similar to CSI-RS pattern 1 (Row 4)
+                case 1  % Similar to CSI-RS Pattern 1 (Row 4)
                     obj.csirs.RowNumber = 4;
                 otherwise
-                    error('Unsupported CSI-IM pattern.');
+                    error('Unsupported CSI-IM Pattern.');
             end
         end
 

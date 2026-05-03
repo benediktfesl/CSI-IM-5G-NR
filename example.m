@@ -3,7 +3,7 @@ carrier = nrCarrierConfig;
 
 % create and configure CSI-IM object, see 3GPP TS 38.214 Section 5.2.2.4. 
 csiim = nrCSIIMConfig;
-csiim.pattern = 0; % pattern 0 or pattern 1
+csiim.Pattern = 0; % Pattern 0 or Pattern 1
 csiim.SubcarrierLocations = 4;
 csiim.SymbolLocations = 9;
 csiim.NumTxPorts = 1;
