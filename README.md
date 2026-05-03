@@ -42,7 +42,7 @@ This row mapping is an implementation helper for generating the expected resourc
 
 ## Installation
 
-Clone the repository or download it from MATLAB File Exchange, then add the repository folder to your MATLAB path:
+Clone the repository or download it from [MATLAB File Exchange](https://de.mathworks.com/matlabcentral/fileexchange/183791-nrcsiimconfig-explicit-csi-im-configuration-for-5g-nr), then add the repository folder to your MATLAB path:
 
 ```matlab
 addpath("path/to/CSI-IM-5G-NR")
